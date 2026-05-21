@@ -1,0 +1,38 @@
+# ModelSim generated files
+work/
+transcript
+vsim.wlf
+modelsim.ini
+
+# Quartus generated files
+db/
+incremental_db/
+output_files/
+c5_pin_model_dump.txt
+INT8SystolicGEMMA.qws
+
+# Generated test vectors
+vectors/
+
+# Python generated files
+__pycache__/
+
+# Misc generated reports/logs
+reports/
+reports.zip
+reports_archive.zip
+*.rpt
+*.summary
+*.smsg
+*.sof
+*.jdi
+*.pin
+*.sld
+*.done
+
+# Excel temporary lock files
+~$*.xlsx
+~$*.xls
+
+# Claude Code internal state
+.claude/
