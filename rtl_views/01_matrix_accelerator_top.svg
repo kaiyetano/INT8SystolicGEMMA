@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1190" height="430" viewBox="0 0 1190 430">
+
+<style>
+  svg { font-family: Segoe UI, Arial, sans-serif; background: #fbfcfe; }
+  .title { font-size: 24px; font-weight: 700; fill: #172033; }
+  .subtitle { font-size: 13px; fill: #506070; }
+  .box { fill: #ffffff; stroke: #21314d; stroke-width: 1.6; rx: 8; }
+  .accent { fill: #eaf2ff; stroke: #235a9f; }
+  .mem { fill: #fff7e6; stroke: #9a6a11; }
+  .ctrl { fill: #edf8f1; stroke: #23733d; }
+  .pipe { fill: #f7eefc; stroke: #71419a; }
+  .small { font-size: 12px; fill: #243044; }
+  .label { font-size: 14px; font-weight: 650; fill: #111827; }
+  .note { font-size: 11px; fill: #5f6b7a; }
+  .arrow { stroke: #374151; stroke-width: 1.8; fill: none; marker-end: url(#arrow); }
+  .dash { stroke-dasharray: 5 4; }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#374151" />
+  </marker>
+</defs>
+
+<text x="32" y="38" class="title">matrix_accelerator RTL hierarchy</text>
+<text x="32" y="60" class="subtitle">Top-level INT8 systolic GEMM accelerator datapath and control hierarchy.</text>
+<rect x="40" y="100" width="170" height="92" class="box accent"/>
+<text x="54" y="124" class="label">Host / Testbench</text>
+<text x="54" y="146" class="small">writes A, B, bias</text>
+<text x="54" y="162" class="small">reads output C</text>
+<rect x="260" y="90" width="170" height="116" class="box mem"/>
+<text x="274" y="114" class="label">BRAM_A banks</text>
+<text x="274" y="136" class="small">N row banks</text>
+<text x="274" y="152" class="small">read A[i][k]</text>
+<rect x="260" y="238" width="170" height="116" class="box mem"/>
+<text x="274" y="262" class="label">BRAM_B banks</text>
+<text x="274" y="284" class="small">N column banks</text>
+<text x="274" y="300" class="small">read B[k][j]</text>
+<rect x="480" y="104" width="190" height="104" class="box ctrl"/>
+<text x="494" y="128" class="label">controller_fsm</text>
+<text x="494" y="150" class="small">skew schedule</text>
+<text x="494" y="166" class="small">clear / busy / done</text>
+<rect x="720" y="150" width="190" height="136" class="box accent"/>
+<text x="734" y="174" class="label">systolic_array</text>
+<text x="734" y="196" class="small">N x N PE grid</text>
+<text x="734" y="212" class="small">output-stationary MACs</text>
+<rect x="970" y="128" width="180" height="92" class="box pipe"/>
+<text x="984" y="152" class="label">post_process</text>
+<text x="984" y="174" class="small">optional bias add</text>
+<text x="984" y="190" class="small">optional ReLU</text>
+<rect x="970" y="270" width="180" height="94" class="box mem"/>
+<text x="984" y="294" class="label">BRAM_C</text>
+<text x="984" y="316" class="small">row-major output</text>
+<text x="984" y="332" class="small">C or Y storage</text>
+<path d="M 210 146 L 260 146" class="arrow"/>
+<text x="235.0" y="140.0" text-anchor="middle" class="note">A writes</text>
+<path d="M 210 172 L 260 288" class="arrow"/>
+<text x="235.0" y="224.0" text-anchor="middle" class="note">B writes</text>
+<path d="M 210 126 L 970 174" class="arrow dash"/>
+<text x="590.0" y="144.0" text-anchor="middle" class="note">bias writes</text>
+<path d="M 430 148 L 480 148" class="arrow"/>
+<text x="455.0" y="142.0" text-anchor="middle" class="note">A read data</text>
+<path d="M 430 296 L 720 238" class="arrow"/>
+<text x="575.0" y="261.0" text-anchor="middle" class="note">B read data</text>
+<path d="M 670 158 L 720 190" class="arrow"/>
+<text x="695.0" y="168.0" text-anchor="middle" class="note">valid/read control</text>
+<path d="M 910 218 L 970 174" class="arrow"/>
+<text x="940.0" y="190.0" text-anchor="middle" class="note">acc_out</text>
+<path d="M 1060 220 L 1060 270" class="arrow"/>
+<text x="1060.0" y="239.0" text-anchor="middle" class="note">processed Y</text>
+<path d="M 970 316 L 210 188" class="arrow"/>
+<text x="590.0" y="246.0" text-anchor="middle" class="note">C readback</text>
+</svg>
